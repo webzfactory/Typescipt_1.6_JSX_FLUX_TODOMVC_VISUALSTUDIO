@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "Xeela"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-Xeela-ad347e0f-f4e9-4de6-b5a5-b7a0e4eaef3b;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "jsx": "React",
+    "listFiles": true,
+    "module": "amd",
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "outDir": "./../wwwroot/js",
+    "removeComments": false,
+    "rootDir": "./",
+    "sourceMap": false,
+    "target": "es5"
+  },
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
+}
