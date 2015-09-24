@@ -1,4 +1,4 @@
-define(["require", "exports", "react/addons", "Components/TodoTextInput"], function (require, exports, React, Input) {
+define(["require", "exports", "react/addons", "Components/TodoApp"], function (require, exports, React, TodoApp_1) {
     var test = function () { alert(); };
-    React.render(React.createElement(Input.TodoTextInput, {"id": "inputTest", "className": "InputTest", "placeholder": "Enter your todo here", "value": "", "onSave": test}), document.getElementById('todoapp'));
+    React.render(React.createElement(TodoApp_1.default, null), document.getElementById('todoapp'));
 });

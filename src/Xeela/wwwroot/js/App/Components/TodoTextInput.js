@@ -5,44 +5,33 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 define(["require", "exports", "react/addons"], function (require, exports, React) {
     var ENTER_KEY_CODE = 13;
-    var TodoTextInputProps = (function () {
-        function TodoTextInputProps() {
-        }
-        return TodoTextInputProps;
-    })();
-    var TodoTextInputState = (function () {
-        function TodoTextInputState(value) {
-            this.value = value;
-        }
-        return TodoTextInputState;
-    })();
     var TodoTextInput = (function (_super) {
         __extends(TodoTextInput, _super);
         function TodoTextInput(props) {
             _super.call(this, props);
-            this.state = new TodoTextInputState(props.value || '');
+            this.state = { value: (props.value || '') };
         }
         TodoTextInput.prototype.render = function () {
             var _this = this;
-            return React.createElement("input", {"className": this.props.className, "id": this.props.id, "placeholder": this.props.placeholder, "onBlur": function () { return _this._save; }, "onChange": function (e) { return _this._onChange(e); }, "onKeyDown": function () { return _this._onKeyDown; }, "value": this.state.value, "autoFocus": true});
+            return React.createElement("input", {"className": this.props.className, "id": this.props.id, "placeholder": this.props.placeholder, "onBlur": function () { return _this._save(); }, "onChange": function (e) { return _this._onChange(e); }, "onKeyDown": function (e) { return _this._onKeyDown(e); }, "value": this.state.value, "autoFocus": true});
         };
         TodoTextInput.prototype._save = function () {
-            //    this.props.onSave(this.state.value);
-            this.setState(new TodoTextInputState(''));
+            this.props.onSave(this.state.value);
+            this.setState({ value: '' });
         };
         TodoTextInput.prototype._onChange = function (e) {
-            debugger;
             var target = e.target;
-            this.setState(new TodoTextInputState(target.value));
+            this.setState({ value: target.value });
         };
-        TodoTextInput.prototype._onKeyDown = function (event) {
-            if (event.keyCode === ENTER_KEY_CODE) {
+        TodoTextInput.prototype._onKeyDown = function (e) {
+            if (e.keyCode === ENTER_KEY_CODE) {
                 this._save();
             }
         };
         return TodoTextInput;
     })(React.Component);
-    exports.TodoTextInput = TodoTextInput;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = TodoTextInput;
 });
 //var ENTER_KEY_CODE = 13;
 //var TodoTextInput = React.createClass({

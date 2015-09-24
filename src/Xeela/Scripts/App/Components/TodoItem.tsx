@@ -1,12 +1,18 @@
-﻿//import * as React from "react/addons";
-
-
-
-
+﻿import * as React from "react/addons";
 ////var TodoActions = require('../actions/TodoActions');
-////var TodoTextInput = require('./TodoTextInput.react');
+import TodoTextInput from "TodoTextInput";
 
+interface TodoItemProps {
+    
+}
 
+interface TodoItemState {
+    isEditing: boolean
+}
+
+export default class TodoItem extends React.Component<TodoItemProps, TodoItemState> {
+
+}
 //var TodoItem = React.createClass({
 
 //    propTypes: {

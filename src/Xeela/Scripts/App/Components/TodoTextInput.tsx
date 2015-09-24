@@ -1,29 +1,26 @@
-﻿
-
-import * as React from "react/addons";
+﻿import * as React from "react/addons";
 
 const ENTER_KEY_CODE: number = 13;
 
-class TodoTextInputProps {
-    className: string
-    id: string
-    placeholder: string
+interface TodoTextInputProps {
+    className?: string
+    id?: string
+    placeholder?: string
+    value?: string
+    onSave?: Function 
+}
+
+interface TodoTextInputState {
     value: string
-    onSave: Function 
 }
 
-class TodoTextInputState {
-    constructor(public value: string) {
-    }
-}
-
-export class TodoTextInput extends React.Component<TodoTextInputProps, TodoTextInputState> {
+export default class TodoTextInput extends React.Component<TodoTextInputProps, TodoTextInputState> {
 
     state: TodoTextInputState; 
 
     constructor(props: TodoTextInputProps) {
         super(props);
-        this.state = new TodoTextInputState(props.value || '');        
+        this.state = { value : (props.value || '')};        
     }   
 
     public render(): JSX.Element {
@@ -31,27 +28,27 @@ export class TodoTextInput extends React.Component<TodoTextInputProps, TodoTextI
             className = {this.props.className}
             id = { this.props.id }
             placeholder = { this.props.placeholder }
-            onBlur = { () => this._save }
-            onChange = { this._onChange }
-            onKeyDown = { () => this._onKeyDown }
+            onBlur = { () => this._save() }
+            onChange = { (e) => this._onChange(e) }
+            onKeyDown = { (e) => this._onKeyDown(e) }
             value = { this.state.value }
             autoFocus = { true}
             />;
     }
 
     private _save(): void {
-        //    this.props.onSave(this.state.value);
-        this.setState(new TodoTextInputState(''));
+        this.props.onSave(this.state.value);
+        this.setState({value : ''});
     }
 
-    private _onChange = (e: React.FormEvent): void => {
-        debugger;
+    private _onChange(e: React.FormEvent): void {
+        
         var target = e.target as HTMLInputElement;
-        this.setState(new TodoTextInputState(target.value));
+        this.setState({ value: target.value });
     }
 
-    private _onKeyDown(event: KeyboardEvent) : void {
-        if (event.keyCode === ENTER_KEY_CODE) {
+    private _onKeyDown(e: __React.KeyboardEvent) : void {
+        if (e.keyCode === ENTER_KEY_CODE) {
             this._save();
         }
     }

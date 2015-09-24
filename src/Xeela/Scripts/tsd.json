@@ -5,14 +5,14 @@
   "path": "Typings",
   "bundle": "Typings/tsd.d.ts",
   "installed": {
-    "react/react.d.ts": {
-      "commit": "09e37435ffb2c56a6f908081194a74756f24f99d"
-    },
     "flux/flux.d.ts": {
       "commit": "09e37435ffb2c56a6f908081194a74756f24f99d"
     },
     "requirejs/require.d.ts": {
       "commit": "09e37435ffb2c56a6f908081194a74756f24f99d"
+    },
+    "react/react.d.ts": {
+      "commit": "32029fcb4e1a3ef8968711b545d77b584435729d"
     }
   }
 }
