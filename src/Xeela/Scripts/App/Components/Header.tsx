@@ -1,5 +1,6 @@
 ﻿import * as React from "react/addons";
 import TodoTextInput from "./TodoTextInput"; 
+import TodoActions from "./../Actions/TodoActions";
 
 
 export default class Header extends React.Component<any, any> {
@@ -18,8 +19,6 @@ export default class Header extends React.Component<any, any> {
 
     //Saves a new Todo
     private _onSave(todoText: string): void {
-        //Call the action to save todo...
-        //Not implemented yet
-        console.log(todoText);
+        TodoActions.create(todoText);
     }
 } 

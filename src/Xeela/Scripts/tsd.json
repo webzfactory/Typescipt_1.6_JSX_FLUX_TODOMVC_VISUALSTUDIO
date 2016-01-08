@@ -13,6 +13,12 @@
     },
     "react/react.d.ts": {
       "commit": "32029fcb4e1a3ef8968711b545d77b584435729d"
+    },
+    "object-assign/object-assign.d.ts": {
+      "commit": "421d6610bdb09e1015b71f5991d7a68d079eca21"
+    },
+    "classnames/classnames.d.ts": {
+      "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
     }
   }
 }

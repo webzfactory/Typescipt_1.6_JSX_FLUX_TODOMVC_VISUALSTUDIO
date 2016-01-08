@@ -3,21 +3,22 @@
  *
  * A singleton that operates as the central hub for application updates.
  */
-
 import * as Flux from "flux"
 
-
-export class AppDispatcher extends Flux.Dispatcher<ActionPayload<any>> {
+class AppDispatcher extends Flux.Dispatcher<Action<any, any>> {
     constructor() {
-        super();
+        super();        
+    }    
+}
+export var AppDispatcherSingleton: AppDispatcher = new AppDispatcher();
+
+export class Action<ActionTypeEnum, Payload> {
+    constructor(type: ActionTypeEnum, payload: Payload) {
+        this.type = type;
+        this.payload = payload;
     }
-}
-export enum AppDispatcherSourceEnum {
-    VIEW_ACTION
-}
-export interface ActionPayload<T> {
-    source: AppDispatcherSourceEnum
-    action: T
+    public type: ActionTypeEnum;
+    public payload: Payload;
 }
 
 

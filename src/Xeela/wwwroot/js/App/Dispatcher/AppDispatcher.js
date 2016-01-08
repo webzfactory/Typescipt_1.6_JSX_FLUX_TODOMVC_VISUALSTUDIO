@@ -1,8 +1,3 @@
-/*
- * AppDispatcher
- *
- * A singleton that operates as the central hub for application updates.
- */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -16,9 +11,13 @@ define(["require", "exports", "flux"], function (require, exports, Flux) {
         }
         return AppDispatcher;
     })(Flux.Dispatcher);
-    exports.AppDispatcher = AppDispatcher;
-    (function (AppDispatcherSourceEnum) {
-        AppDispatcherSourceEnum[AppDispatcherSourceEnum["VIEW_ACTION"] = 0] = "VIEW_ACTION";
-    })(exports.AppDispatcherSourceEnum || (exports.AppDispatcherSourceEnum = {}));
-    var AppDispatcherSourceEnum = exports.AppDispatcherSourceEnum;
+    exports.AppDispatcherSingleton = new AppDispatcher();
+    var Action = (function () {
+        function Action(type, payload) {
+            this.type = type;
+            this.payload = payload;
+        }
+        return Action;
+    })();
+    exports.Action = Action;
 });

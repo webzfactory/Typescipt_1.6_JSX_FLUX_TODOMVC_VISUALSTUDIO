@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "react/addons", "./TodoTextInput"], function (require, exports, React, TodoTextInput_1) {
+define(["require", "exports", "react/addons", "./TodoTextInput", "./../Actions/TodoActions"], function (require, exports, React, TodoTextInput_1, TodoActions_1) {
     var Header = (function (_super) {
         __extends(Header, _super);
         function Header() {
@@ -15,9 +15,7 @@ define(["require", "exports", "react/addons", "./TodoTextInput"], function (requ
         };
         //Saves a new Todo
         Header.prototype._onSave = function (todoText) {
-            //Call the action to save todo...
-            //Not implemented yet
-            console.log(todoText);
+            TodoActions_1.default.create(todoText);
         };
         return Header;
     })(React.Component);

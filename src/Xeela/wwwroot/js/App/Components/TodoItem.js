@@ -3,12 +3,35 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "react/addons"], function (require, exports, React) {
+define(["require", "exports", "react/addons", "./../Actions/TodoActions", "classnames"], function (require, exports, React, TodoActions_1, classnames) {
+    var TodoItemState = (function () {
+        function TodoItemState(pIsEditing) {
+            if (pIsEditing === void 0) { pIsEditing = false; }
+            this.isEditing = pIsEditing;
+        }
+        return TodoItemState;
+    })();
     var TodoItem = (function (_super) {
         __extends(TodoItem, _super);
         function TodoItem() {
             _super.apply(this, arguments);
+            this.state = new TodoItemState();
         }
+        TodoItem.prototype.render = function () {
+            var _this = this;
+            var todo = this.props.todoItemModel;
+            return React.createElement("li", {"className": classnames({
+                'completed': todo.IsComplete,
+                'editing': this.state.isEditing
+            }), "key": this.props.key}, React.createElement("div", {"className": "view"}, React.createElement("input", {"className": "toggle", "type": "checkbox", "checked": todo.IsComplete, "onChange": function () { return _this._onToggleComplete(); }}), React.createElement("label", {"style": { textDecoration: todo.IsComplete ? "line-through" : "initial" }}, todo.Text), React.createElement("button", {"className": "destroy"})));
+        };
+        TodoItem.prototype._onToggleComplete = function () {
+            debugger;
+            TodoActions_1.default.toggleComplete(this.props.todoItemModel);
+        };
+        TodoItem.prototype._onDoubleClick = function () {
+            this.setState(new TodoItemState(true));
+        };
         return TodoItem;
     })(React.Component);
     Object.defineProperty(exports, "__esModule", { value: true });
